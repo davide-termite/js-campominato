@@ -16,9 +16,10 @@ switch (level) {
 
 // Array Gioco
 var userNumber;
+var safeNumber = [];
 var randomList = [];
 
-// Funzione Gioco
+// Funzione Numeri Computer
 function generateGameNumbers() {
 
   // Creo Array Numeri Random
@@ -31,19 +32,26 @@ function generateGameNumbers() {
   console.log(randomList);
 }
 
+// Funzione Gioco
 function generateGame (userNumber) {
 
   do {
-
     // Chiedo numero ad user
     var userNumber = parseInt(prompt("Inserisci un numero da uno a " + gameLevel));
 
     // Controllo se numero utente fa parte dell'Array
     var check = randomList.includes(userNumber);
 
+    // Colleziono numeri validi che utente inserisce
+    safeNumber.push(userNumber);
+
   } while (check === false);
 
-  return alert("Hai perso :(");
+  console.log(safeNumber);
+
+  // || (safeNumber.length < (gameLevel - 16))
+
+  return alert("Hai perso :(  Hai inserito " + (safeNumber.length - 1) + " numeri corretti");
 
 }
 
